@@ -1,0 +1,224 @@
+def choose(x):
+    if x == 1:
+        decimalToBinary()
+    elif x == 2:
+        decimalToOctal()
+    elif x == 3:
+        decimalToHex()
+    elif x == 4:
+        binaryToDecimal()
+    elif x == 5:
+        octalToDecimal()
+    elif x == 6:
+        hexToDecimal()
+    elif x == 7:
+        calculator()
+    elif x == 0:
+        print('\nExit!')
+    else:
+        print('Not correct!')
+        
+def decimalToBinary():
+    l = []
+    n = int(input('Enter decimal:'))
+    while n != 0:
+        rem = n % 2
+        l.append(rem)
+        n = n // 2
+    l.reverse()
+    print('Result:')
+    for i in l:
+        print(i, end='')
+
+def decimalToOctal():
+    l = []
+    n = int(input('Enter decimal:'))
+    while n != 0:
+        rem = n % 8
+        l.append(rem)
+        n = n // 8
+    l.reverse()
+    print('Result: ', end='')
+    for i in l:
+        print(i, end='')
+
+def decimalToHex():
+    l = []
+    n = int(input('Enter decimal:'))
+    while n != 0:
+        rem = n % 16
+        if rem == 15:
+            rem = 'F'
+        elif rem == 14:
+            rem = 'E'
+        elif rem == 13:
+            rem = 'D'
+        elif rem == 12:
+            rem = 'C'
+        elif rem == 11:
+            rem = 'B'
+        elif rem == 10:
+            rem = 'A'
+        l.append(rem)
+        n = n // 16    
+    l.reverse()
+    print('Result: ', end='')
+    for i in l:
+        print(i, end='')
+
+def binaryToDecimal():
+    n = input('Enter binary:')
+    summ = 0
+    temp = 0
+    li = []
+    l = len(n)
+    for i in n:
+        temp = int(i) * 2**(l-1)
+        li.append(temp)
+        l = l - 1
+    for i in li:
+        summ = summ + i
+    print('Result:', summ)
+
+def octalToDecimal():
+    n = input('Enter Octal:')
+    summ = 0
+    temp = 0
+    li = []
+    l = len(n)
+    for i in n:
+        temp = int(i) * 8**(l-1)
+        li.append(temp)
+        l = l - 1
+    for i in li:
+        summ = summ + i
+    print('Result:', summ)
+    
+def hexToDecimal():
+    n = input('Enter Hexadecimal:')
+    li = []
+    summ = 0
+    temp = 0
+    l = len(n)
+    for i in n:
+        if i == 'A':
+            i = 10
+        elif i == 'B':
+            i = 11
+        elif i == 'C':
+            i = 12
+        elif i == 'D':
+            i = 13
+        elif i == 'E':
+            i = 14
+        elif i == 'F':
+            i = 15
+        temp = int(i) * 16**(l-1)
+        li.append(temp)
+        l = l - 1
+    for i in li:
+        summ = summ + i
+    print('Result:', summ)
+    
+def calChoose(n):
+    if n == 1:
+        binaryAdd()
+    elif n == 2:
+        binaryMin()
+    elif n == 3:
+        octalAdd()
+    elif n == 4:
+        octalMin()
+    elif n == 5:
+        hexAdd()
+    elif n == 6:
+        hexMin()
+    elif n == 0:
+        print('Exit')
+
+def calculator():
+    print('\n1. Binary Adding')
+    print('2. Binary Minus')
+    print('3. Octal Adding')
+    print('4. Octal Minus')
+    print('5. Hexadecimal Adding')
+    print('6. Hexadecimal Minus')
+    print('0. Exit')
+    q = int(input('\nChoose:'))
+    calChoose(q)
+
+def binaryAdd():
+    a = int(input("Enter first number:"))
+    b = int(input("Enter second number:"))
+    temp = 0
+    c = ''
+
+    while a != 0 or b != 0:
+        temp2 = (a % 10 + b % 10 + temp) % 2
+        c = c + str(temp2)
+        temp = (a % 10 + b % 10 + temp) // 2
+        a = a // 10
+        b = b // 10
+    if temp != 0:
+        c = c + str(temp)
+    c1 = []
+    for i in c:
+        c1.append(i)
+    c1.reverse()
+    for i in c1:
+        print(i, end='')
+        
+def octalAdd():
+    a = int(input("Enter first number:"))
+    b = int(input("Enter second number:"))
+    temp = 0
+    c = ''
+
+    while a != 0 or b != 0:
+        temp2 = (a % 10 + b % 10 + temp) % 8
+        c = c + str(temp2)
+        temp = (a % 10 + b % 10 + temp) // 8
+        a = a // 10
+        b = b // 10
+    if temp != 0:
+        c = c + str(temp)
+    c1 = []
+    for i in c:
+        c1.append(i)
+    c1.reverse()
+    for i in c1:
+        print(i, end='')
+
+def hexAdd():
+    a = int(input("Enter first number:"))
+    b = int(input("Enter second number:"))
+    temp = 0
+    c = ''
+
+    while a != 0 or b != 0:
+        temp2 = (a % 10 + b % 10 + temp) % 16
+        c = c + str(temp2)
+        temp = (a % 10 + b % 10 + temp) // 16
+        a = a // 10
+        b = b // 10
+    if temp != 0:
+        c = c + str(temp)
+    c1 = []
+    for i in c:
+        c1.append(i)
+    c1.reverse()
+    for i in c1:
+        print(i, end='')
+    
+x = -1
+while x != 0:
+    print('\n1. Decimal to Binary')
+    print('2. Decimal to Octal')
+    print('3. Decimal to Hexadecimal')
+    print('4. Binary to Decimal')
+    print('5. Octal to Decimal')
+    print('6. Hexadecimal to Decimal')
+    print('7. Calculator')
+    print('0. Exit')
+    x = int(input('\nPlease choose:'))
+    choose(x)
